@@ -1,31 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Index GPT Search</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/98.css">
-    <link rel="stylesheets" href="/static/style.css">
-  </head><center>
-  <body class="windows">
-    <h1 class="window">Twitter Search</h1>
-    <form action="/results" method="POST" class="window">
-      <label for="handles">Twitter Handle:</label><br>
-      <input type="text" id="handles" name="handles"><br>
-      <label for="query">Query:</label><br>
-      <input type="text" id="query" name="query"><br><br>
-      <input type="submit" value="Submit">
-    </form>
 
-    <h1 class="window">File Search & Upload</h1>
-    <form action="/upload" method="POST" class="window" enctype="multipart/form-data">
-      <label for="file">File:</label><br>
-      <input type="file" id="file" name="file"><br><br>
-      <input type="submit" value="Submit File & Query">
-      <br> <br><br>
-    <form action="/folder_results" method="POST" class="window">
-      <label for="folder_query">Prompt(Query):</label><br>
-      <input type="text" id="folder_query" name="folder_query"><br><br>
-      <input type="submit" value="Submit">
+<head>
+  <title>Index GPT Search</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/98.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <style>
+    /* Add brighter and fancier styles here */
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .window {
+      padding: 20px;
+      margin: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f8f8f8;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: #333;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .input-field {
+      margin-bottom: 10px;
+    }
+
+    .submit-button {
+      background-color: #ff4081;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body class="windows">
+  <div class="center">
+    <h1 class="window" style="color: #ff4081;">Twitter Search</h1>
+    <form action="/results" method="POST" class="window">
+      <div class="input-field">
+        <label for="handles">Twitter Handle:</label><br>
+        <input type="text" id="handles" name="handles"><br>
+      </div>
+      <div class="input-field">
+        <label for="query">Query:</label><br>
+        <input type="text" id="query" name="query"><br><br>
+      </div>
+      <input type="submit" value="Submit" class="submit-button">
     </form>
-  </body>
-</center>
+    <h1 class="window" style="color: #ff4081;">File Search & Upload</h1>
+    <form action="/upload" method="POST" class="window" enctype="multipart/form-data">
+      <div class="input-field">
+        <label for="file">File:</label><br>
+        <input type="file" id="file" name="file"><br><br>
+      </div>
+      <input type="submit" value="Submit File & Query" class="submit-button">
+    </form>
+    <h1 class="window" style="color: #ff4081;">Folder Search</h1>
+    <form action="/folder_results" method="POST" class="window">
+      <div class="input-field">
+        <label for="folder_query">Prompt (Query):</label><br>
+        <input type="text" id="folder_query" name="folder_query"><br><br>
+      </div>
+      <input type="submit" value="Submit" class="submit-button">
+    </form>
+  </div>
+</body>
+
 </html>

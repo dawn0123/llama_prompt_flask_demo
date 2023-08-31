@@ -12,6 +12,8 @@ app = Flask(__name__)
 TwitterTweetReader = download_loader("TwitterTweetReader")
 
 # Define a function to load the Twitter data using the TwitterTweetReader
+
+
 def load_twitter_data(handles):
     # Replace 'YOUR_TOKEN' with your actual Twitter API bearer token
     loader = TwitterTweetReader(bearer_token="your key here")
@@ -25,7 +27,6 @@ def load_folder():
     index = GPTSimpleVectorIndex(documents)
     return index
 
-    
 
 # Define the home page route
 @app.route('/')
@@ -33,6 +34,8 @@ def home():
     return render_template('home.html')
 
 # Define the results page route
+
+
 @app.route('/results', methods=['POST'])
 def results():
     # Get the list of Twitter handles from the form input
@@ -62,7 +65,7 @@ def folder_results():
     return render_template('folder_results.html', results=results)
 
 
-## Define an upload route for the /data/ folder to upload files
+# Define an upload route for the /data/ folder to upload files
 @app.route('/upload', methods=['POST'])
 def upload():
     # Get the file from the form input
@@ -72,17 +75,14 @@ def upload():
 
     index = load_folder()
 
-
-    ## Run the query on the uploaded file
+    # Run the query on the uploaded file
     # Get the search query from the form input
     query = request.form['folder_query']
-    ## Perform the query on the index and extract the data
+    # Perform the query on the index and extract the data
     results = index.query(query)
 
     # Redirect to the folder_results page
     return render_template('folder_results.html', results=results)
-
-
 
 
 if __name__ == '__main__':
